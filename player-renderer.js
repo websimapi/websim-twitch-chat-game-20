@@ -63,8 +63,11 @@ function drawSkillIndicator(ctx, player, screenX, usernameTagY, usernameFontSize
     ctx.arc(iconCenterX, iconCenterY, iconRadius, 0, Math.PI * 2);
     ctx.fill();
 
-    // Draw icon
-    ctx.drawImage(skillInfo.icon, iconCenterX - iconRadius, iconCenterY - iconRadius, iconSize, iconSize);
+    // Draw icon with padding
+    const iconPadding = 0.15; // 15% padding
+    const paddedIconSize = iconSize * (1 - iconPadding * 2);
+    const paddedIconRadius = paddedIconSize / 2;
+    ctx.drawImage(skillInfo.icon, iconCenterX - paddedIconRadius, iconCenterY - paddedIconRadius, paddedIconSize, paddedIconSize);
 
     // Draw progress arc
     const progress = Math.min(1, Math.max(0, skillInfo.progress));
